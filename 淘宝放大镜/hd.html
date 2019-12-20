@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		/* css部分 */
+		
+		div {
+			height: 150px;
+		}
+		
+		div:nth-child(odd) {
+			background-color: #8ae238;
+		}
+		
+		div:nth-child(even) {
+			background-color: #66d9ef;
+		}
+		
+		.top {
+			position: fixed;
+			right: 50px;
+			bottom: 50px;
+			display: block;
+			width: 50px;
+			height: 50px;
+			font-size: 20px;
+			background-color: white;
+			display: none;
+		}
+	</style>
+
+	<body>
+		<canvas id="myCanvas" width="300" height="150" style="border: 1px solid;"></canvas>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<a href="javascript:;" class="top" id="top">返回頂部</a>
+	</body>
+
+</html>
+
+<script>
+	/* js代码 */
+	var topBtn = document.getElementById('top');
+	// 获取视窗高度
+	var winHeight = document.documentElement.clientHeight;
+	window.onscroll = function() {
+		// 获取页面向上滚动距离，chrome浏览器识别document.body.scrollTop，而火狐识别document.documentElement.scrollTop，这里做了兼容处理
+		var toTop = document.documentElement.scrollTop || document.body.scrollTop;
+		// 如果滚动超过一屏，返回顶部按钮出现，反之隐藏
+		if(toTop >= winHeight) {
+			topBtn.style.display = 'block';
+		} else {
+			topBtn.style.display = 'none';
+		}
+	}
+	topBtn.onclick = function() {
+		var timer = setInterval(function() {
+			var toTop = document.documentElement.scrollTop || document.body.scrollTop;
+			// 判断是否到达顶部，到达顶部停止滚动，没到达顶部继续滚动
+			if(toTop == 0) {
+				clearInterval(timer);
+			} else {
+				// 设置滚动速度
+				var speed = Math.ceil(toTop / 5);
+				// 页面向上滚动
+				document.documentElement.scrollTop = document.body.scrollTop = toTop - speed;
+			}
+		}, 50);
+	}
+</script>
+<script type="text/javascript">
+	var c = document.getElementById("myCanvas");
+	var context = c.getContext("2d");
+	context.fillStyle = "#00FFFF";
+	context.beginPath();
+	context.arc(70, 70, 60, Math.PI * 2, 0, true);
+	context.closePath();
+	context.fill();
+	context.translate(140, 10);
+	context.strokeStyle = "#00ff11";
+	context.beginPath();
+	context.arc(70, 70, 60, Math.PI * 2, 0, true);
+	context.stroke();
+</script>

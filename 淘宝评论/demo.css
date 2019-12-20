@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.wrapper{
+    width: 75%;
+    margin: 100px auto;
+    borderR: solid #cecece;
+}
+.com{
+    color: #333;
+    width: 90%;
+    margin: 20px auto;
+}
+.photo-box{
+    width: 90%;
+    margin: 0 auto;
+}
+#photos{
+    height: 45px;
+}
+#photos img{
+    width: 40px;
+    height: 40px;
+    cursor: url('./img/coverAdd.png'), auto;
+}
+#photos li{
+    float: left;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ddd;
+    margin-right: 10px;
+    padding: 2px;
+    position: relative;
+}
+#photos li span{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top:  6px solid #f23d6a;
+    position: absolute;
+    left: 15px;
+    bottom: -13px;
+    opacity: 0;
+}
+.photoView{
+    width: 0;
+    margin: 20px 0 0;
+    padding: 10px 0;
+    height: 0;
+    background-color: #333;
+    transition: all 100ms ease-in-out;
+    overflow: hidden;
+    text-align: center; 
+    position: relative;
+}
+.photoView a{
+    position: absolute;
+    top: 48%;
+    text-decoration: none;
+    font-size: 2em;
+    color: #f23d6a;
+}
+.photoView a.left{
+    left: 10px;
+}
+.photoView a.right{
+    right: 10px;
+}
+#photos li.active{
+    border: 2px solid #f23d6a;
+}
+#photos .active span{
+    opacity: 1;
+}
+
